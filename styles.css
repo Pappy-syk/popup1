@@ -1,0 +1,93 @@
+/* ปรับปรุงการตั้งค่าพื้นฐาน */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ปรับให้ Pop-up เต็มหน้าจอ */
+.countdown-popup {
+    position: fixed; /* ทำให้ Pop-up อยู่คงที่ */
+    top: 0;
+    left: 0;
+    width: 100vw; /* เต็มความกว้างของหน้าจอ */
+    height: 100vh; /* เต็มความสูงของหน้าจอ */
+    background: rgba(65, 65, 65, 0.7); /* ฉากหลังสีดำโปร่งแสง */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999; /* ให้อยู่ข้างหน้า */
+    padding: 0; /* ไม่ต้องการ padding */
+    overflow: hidden; /* ซ่อนส่วนที่เกินออกจาก Pop-up */
+}
+
+/* เนื้อหาของป๊อปอัพ */
+.popup-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* เพื่อให้สามารถจัดตำแหน่งตัวเลขบนภาพ */
+    background: transparent; /* ทำให้พื้นหลังของป๊อปอัพโปร่งใส */
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 1000; /* อยู่เหนือพื้นหลังเบลอ */
+
+}
+
+/* รูปภาพ */
+.popup-image {
+    max-width: 100%; /* ขยายขนาดภาพให้ใหญ่ขึ้น */
+    height: auto;
+    display: block;
+    z-index: 1000; /* อยู่เหนือพื้นหลังเบลอ */
+}
+
+/* ปรับขนาดตามหน้าจอทั้งหมด */
+.countdown-number {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    text-shadow: none; /* ไม่มีเงา */
+}
+
+/* สำหรับหน้าจอมือถือ */
+@media (max-width: 600px) {
+    .countdown-number {
+        font-size: 16vw; /* ขนาดตัวเลขใช้ 8% ของความกว้างหน้าจอ */
+        top: 17%; /* เลื่อนตัวเลขลงมาจากขอบบน 20% ของความสูง */
+        left: 26%; /* จัดให้อยู่กลางในแนวนอน */
+        transform: translateX(-50%); /* จัดให้อยู่กลางอย่างสมบูรณ์ */
+        color: rgb(225, 255, 0); /* สีพื้นหลังของตัวเลขเป็นสีน้ำเงิน */
+    }
+}
+
+/* สำหรับหน้าจอแท็บเล็ต */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .countdown-number {
+        font-size: 5vw; /* ขนาดตัวเลขใช้ 5% ของความกว้างหน้าจอ */
+        top: 15%; /* เลื่อนตัวเลขลงมาจากขอบบน 15% ของความสูง */
+        left: 50%; /* จัดให้อยู่กลางในแนวนอน */
+        transform: translateX(-50%); /* จัดให้อยู่กลางอย่างสมบูรณ์ */
+        background-color: red; /* สีพื้นหลังของตัวเลขเป็นสีแดง */
+    }
+}
+
+/* สำหรับหน้าจอคอมพิวเตอร์หรือเดสก์ท็อป */
+@media (min-width: 1025px) {
+    .countdown-number {
+        font-size: 200px; /* กำหนดขนาดตัวเลขที่แน่นอนสำหรับหน้าจอคอมพิวเตอร์ */
+        top: 5%; /* เลื่อนตัวเลขลงมาจากขอบบน 10% ของความสูง */
+        left: 25%; /* จัดให้อยู่กลางในแนวนอน */
+        transform: translateX(-50%); /* จัดให้อยู่กลางอย่างสมบูรณ์ */
+        color: yellow; /* สีพื้นหลังของตัวเลขเป็นสีเหลือง */
+    }
+}
+
+/* ปุ่มปิด */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 32px; /* ขยายขนาดปุ่มปิด */
+    cursor: pointer;
+    color: white;
+}
